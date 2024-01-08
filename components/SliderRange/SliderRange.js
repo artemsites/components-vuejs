@@ -1,3 +1,6 @@
+/**
+ * @version 1.0 - 08.01.2024
+ */
 import { defineComponent } from "vue";
 import './SliderRange.scss';
 
