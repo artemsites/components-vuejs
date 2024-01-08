@@ -38,7 +38,7 @@ $translateXLast: translateX(calc(var(--o-last) * -1));
     align-items: center;
 
     background-color: var(--c-white, #fff);
-    box-shadow: 0 0 $trackHeight 0rem $colorGray;
+    border: 1px solid $color;
     border-radius: $trackHeight;
     overflow: hidden;
 
@@ -64,10 +64,10 @@ $translateXLast: translateX(calc(var(--o-last) * -1));
 
     background-color: $color;
     pointer-events: none;
-    
+
     position: absolute;
     z-index: 1;
-    
+
     &._first {
       transform: $translateXFirst;
       left: var(--o-first);
@@ -112,7 +112,7 @@ $translateXLast: translateX(calc(var(--o-last) * -1));
 
   &__range {
     height: $size;
-    
+
     opacity: 0;
     cursor: pointer;
 
@@ -130,7 +130,7 @@ $translateXLast: translateX(calc(var(--o-last) * -1));
       right: var(--o-last);
     }
   }
-  
+
 }
 
 @keyframes wave {
