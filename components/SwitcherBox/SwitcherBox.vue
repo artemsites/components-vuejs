@@ -1,5 +1,5 @@
 <template>
-  <label class="switcher-box" :class="[(isSwitcherOn) ? '_on' : '_off']" :style="styles">
+  <label class="switcher-box" :class="[(isSwitcherOn) ? '_on' : '_off']">
     <span class="switcher-box__label" v-if="$slots._">
       <slot />
     </span>
@@ -144,27 +144,22 @@
 
 <script setup>
 /**
- * <switcher-box style="--c-accent: var(--bright-green);" indicatorBoxShadow size="3rem">label name</switcher-box>
+ * <switcher-box style="--c-accent: var(--bright-green); --size: 0.7rem;" indicatorBoxShadow>label name</switcher-box>
  */
-  import { ref, computed, watch } from "vue"
+import { ref, computed, watch } from "vue"
 
-  let isSwitcherOn = ref(false)
-  let indicator = ref()
+let isSwitcherOn = ref(false)
+let indicator = ref()
 
-  let props = defineProps({
-    size: String,
-    indicatorBoxShadow: Boolean,
+let props = defineProps({
+  indicatorBoxShadow: Boolean,
+})
+
+watch(isSwitcherOn, () => {
+  // Сброс анимации индикатора
+  indicator.value.style.animationName = "none"
+  requestAnimationFrame(() => {
+    indicator.value.style.animationName = ""
   })
-
-  watch(isSwitcherOn, () => {
-    // Сброс анимации индикатора
-    indicator.value.style.animationName = "none"
-    requestAnimationFrame(() => {
-      indicator.value.style.animationName = ""
-    })
-  })
-
-  let styles = computed(() => {
-    return "--size:" + (props.size) ? props.size : null
-  })
+})
 </script>
